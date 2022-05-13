@@ -6,7 +6,9 @@ import 'package:camera/camera.dart';
 //  runApp(const MyApp());
 //}
 
-List<CameraDescription> cameras;
+
+List<CameraDescription> cameras = <CameraDescription>[];
+//List<CameraDescription> cameras;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
@@ -18,6 +20,9 @@ Future<void> main() async {
   ));
 }
 
+
+
+/*
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -127,3 +132,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/

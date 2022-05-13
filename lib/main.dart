@@ -2,9 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:tensorflow_lite/screens/home.dart';
 import 'package:camera/camera.dart';
 
+//void main() {
+//  runApp(const MyApp());
+//}
 
-void main() {
-  runApp(const MyApp());
+List<CameraDescription> cameras;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyHomePage(
+      cameras,
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -50,21 +61,6 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-
-
-
-List<CameraDescription> cameras;
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  cameras = await availableCameras();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyHomePage(
-      cameras,
-    ),
-  ));
-}
-
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -78,10 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
